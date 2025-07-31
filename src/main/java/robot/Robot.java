@@ -38,6 +38,7 @@ public class Robot {
     }
 
     // Getters nécessaires pour les tests
+      
     public int getX() {
         return x;
     }
@@ -46,7 +47,31 @@ public class Robot {
         return y;
     }
 
-    public Direction getDirection() {
+
+    public Directions getDirection() {
         return direction;
+    }
+
+    //---------------------COdes-----------------------
+
+    static void advance(){
+
+    }
+
+    static void turnLeft(){
+
+    }
+
+    static void turnRight(){
+
+    }
+
+    static void stepBack(){
+
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     }
 }
