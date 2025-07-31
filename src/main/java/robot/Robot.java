@@ -41,16 +41,16 @@ public class Robot {
 
     public void turnRight(){
         if (getDirection()==Direction.NORTH){
-            setDirection(Direction.EAST);
+            direction = Direction.EAST;
         }
         if (getDirection()==Direction.EAST){
-            setDirection(Direction.SOUTH);
+            direction = Direction.SOUTH;
         }
         if (getDirection()==Direction.SOUTH){
-            setDirection(Direction.WEST);
+            direction = Direction.WEST;
         }
         if (getDirection()==Direction.WEST){
-            setDirection(Direction.NORTH);
+            direction = Direction.NORTH;
         }
     }
 
