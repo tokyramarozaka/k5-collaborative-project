@@ -1,24 +1,21 @@
 package robot;
 
-import java.util.Scanner;
-
 public class Robot {
 
-    protected int x = 0;
-    protected int y = 0;
-    protected Direction direction = Direction.NORTH;
+    protected int x;
+    protected int y;
+    protected Direction direction;
 
-    public Robot() {}
+    public Robot() {
+        this.x = 0;
+        this.y = 0;
+        this.direction = Direction.NORTH;
+    }
 
     public Robot(int x, int y, Direction direction) {
         this.x = x;
         this.y = y;
         this.direction = direction;
-    }
-
-    @Override
-    public String toString() {
-        return "Coordonnees du robot:\nX: " + x + "\nY: " + y + "\nDirection: " + direction;
     }
 
     public int getX() {
@@ -35,73 +32,33 @@ public class Robot {
 
     public void afficherCoordonnees() {
         System.out.println("- - - - -");
-        System.out.println("Nouveau coordonnees du robot: \nx : " + this.x + "\ny : " + this.y + "\nDirection: " + this.direction);
+        System.out.println("Nouveaux coordonnees du robot: \nx : " + this.x + "\ny : " + this.y + "\nDirection: " + this.direction);
         System.out.println("- - - - -");
     }
 
     public void advance() {
-        switch (this.direction) {
-            case NORTH:
-                this.y += 1;
-                break;
-            case SOUTH:
-                this.y -= 1;
-                break;
-            case WEST:
-                this.x -= 1;
-                break;
-            case EAST:
-                this.x += 1;
-                break;
+        switch (direction) {
+            case NORTH -> y++;
+            case SOUTH -> y--;
+            case WEST -> x--;
+            case EAST -> x++;
         }
         afficherCoordonnees();
     }
 
     public void turnRight() {
-        switch (this.direction) {
-            case NORTH:
-                this.direction = Direction.EAST;
-                break;
-            case WEST:
-                this.direction = Direction.NORTH;
-                break;
-            case SOUTH:
-                this.direction = Direction.WEST;
-                break;
-            case EAST:
-                this.direction = Direction.SOUTH;
-                break;
+        switch (direction) {
+            case NORTH -> direction = Direction.EAST;
+            case EAST -> direction = Direction.SOUTH;
+            case SOUTH -> direction = Direction.WEST;
+            case WEST -> direction = Direction.NORTH;
         }
         System.out.println("Le robot a change de direction");
         afficherCoordonnees();
     }
 
-    public void afficherMenu() {
-        while (true) {
-            System.out.println("Choississez une option: \n1. Changer la position du robot\n2. Changer la direction du robot\n3. Voir les coordonnees\n4. Quitter");
-            Scanner scan = new Scanner(System.in);
-            String choice = scan.nextLine();
-            switch (choice) {
-                case "1":
-                    advance();
-                    break;
-                case "2":
-                    turnRight();
-                    break;
-                case "3":
-                    afficherCoordonnees();
-                    break;
-                case "4":
-                    System.out.println("A la prochaine !");
-                    return;
-                default:
-                    System.out.println("Option invalide. Reessayer !");
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        var terminator = new Robot(2, 1, Direction.NORTH);
-        terminator.afficherMenu();
+    @Override
+    public String toString() {
+        return "Coordonnees du robot:\nX: " + x + "\nY: " + y + "\nDirection: " + direction;
     }
 }

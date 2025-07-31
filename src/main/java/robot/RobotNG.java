@@ -21,26 +21,12 @@ public class RobotNG extends Robot {
     }
 
     public void stepBack() {
-        switch (this.direction) {
-            case NORTH:
-                this.y -= 1;
-                break;
-            case SOUTH:
-                this.y += 1;
-                break;
-            case EAST:
-                this.x -= 1;
-                break;
-            case WEST:
-                this.x += 1;
-                break;
+        switch (direction) {
+            case NORTH -> y--;
+            case SOUTH -> y++;
+            case EAST -> x--;
+            case WEST -> x++;
         }
         System.out.println("Le robot vient de reculer");
-    }
-
-    public static void main(String[] args) {
-        var terminator2 = new RobotNG(3, 4,  Direction.EAST);
-        terminator2.turnLeft();
-        System.out.println(terminator2.toString());
     }
 }
